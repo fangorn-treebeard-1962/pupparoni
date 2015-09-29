@@ -5,3 +5,8 @@ before_script:
   - npm install -g bower grunt-cli
   - bower install
 services: mongodb
+notifications:
+  email:
+    recipients:
+      - pbl90090@ucmo.edu
+      - plunder62@yahoo.com
