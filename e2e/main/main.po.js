@@ -9,6 +9,13 @@ var MainPage = function() {
   this.heroEl = element(by.css('.hero-unit'));
   this.h1El = this.heroEl.element(by.css('h1'));
   this.imgEl = this.heroEl.element(by.css('img'));
+
+  this.navBar = element(by.css('div.navbar'));
+  this.loginLink = element(by.cssContainingText('a', 'Login'));
+  this.registerLink = element(by.cssContainingText('a', 'Sign up'));
+  this.companyLink = element(by.cssContainingText('a', 'Company'));
+  this.productsLink = element(by.cssContainingText('a', 'Products'));
+
 };
 
 module.exports = new MainPage();
