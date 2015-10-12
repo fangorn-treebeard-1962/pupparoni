@@ -5,6 +5,12 @@ angular.module('pupparoniApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    }, {
+      'title': 'Products',
+      'link': '/productList'
+    }, {
+      'title': 'Company',
+      'link': '/company'
     }];
 
     $scope.isCollapsed = true;
