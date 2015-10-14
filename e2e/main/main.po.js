@@ -16,6 +16,9 @@ var MainPage = function() {
   this.companyLink = element(by.cssContainingText('a', 'Company'));
   this.productsLink = element(by.cssContainingText('a', 'Products'));
 
+  this.getActiveNavbarLink = function() {
+    return element(by.css('div.navbar div div#navbar-main li.active a'));
+  }
 };
 
 module.exports = new MainPage();

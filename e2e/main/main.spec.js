@@ -10,8 +10,7 @@ describe('Main View', function() {
 
   it('should have navbar, and Home should be active', function() {
     expect(page.navBar).toBeDefined();
-    var activeLink = element(by.css('div.navbar div div#navbar-main li.active a'));
-    expect(activeLink.getText()).toBe("Home");
+    expect(page.getActiveNavbarLink().getText()).toBe("Home");
   });
 
   it('should include expected navigation links', function () {
