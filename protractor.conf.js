@@ -18,7 +18,12 @@ exports.config = {
 
   // list of files / patterns to load in the browser
   specs: [
-    'e2e/**/*.spec.js'
+    //'e2e/main/**/*.spec.js',
+    //'e2e/company/contact/**/*.spec.js',
+    //'e2e/company/info/**/*.spec.js',
+    //'e2e/company/support/**/*.spec.js'
+    //'e2e/productList/**/*.spec.js',
+    'e2e/product/**/*.spec.js'
   ],
 
   // Patterns to exclude.
@@ -31,7 +36,7 @@ exports.config = {
   // and
   // https://code.google.com/p/selenium/source/browse/javascript/webdriver/capabilities.js
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'firefox'
   },
 
   // ----- The test framework -----

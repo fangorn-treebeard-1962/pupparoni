@@ -25,6 +25,7 @@ module.exports = function(config) {
       'client/app/app.js',
       'client/app/app.coffee',
       'client/app/**/*.js',
+      'client/app/**/*.spec.js',
       'client/app/**/*.coffee',
       'client/components/**/*.js',
       'client/components/**/*.coffee',
@@ -48,7 +49,7 @@ module.exports = function(config) {
       stripPrefix: 'client/'
     },
 
-    
+
 
     // list of files / patterns to exclude
     exclude: [],
