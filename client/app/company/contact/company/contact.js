@@ -3,8 +3,8 @@
 angular.module('pupparoniApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('company/contact', {
-        url: '/company/contact',
+      .state('company/contact1', {
+        url: '/company/contact1',
         templateUrl: 'app/company/contact/company/contact.html',
         controller: 'CompanyContactCtrl'
       });
