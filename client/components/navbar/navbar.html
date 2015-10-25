@@ -11,9 +11,22 @@
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+        <span ng-repeat-start="item in menu"></span>
+          <li class="dropdown" ng-if="isSubMenu(item)">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              {{item.title}} <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li ng-repeat="subMenuItem in item.menu">
+                <a ng-href="{{subMenuItem.link}}">{{subMenuItem.title}}</a>
+              </li>
+            </ul>
+          </li>
+          <li ng-if="isMenuItem(item)">
             <a ng-href="{{item.link}}">{{item.title}}</a>
-        </li>
+          </li>
+        <span ng-repeat-end></span>
+
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       </ul>
 

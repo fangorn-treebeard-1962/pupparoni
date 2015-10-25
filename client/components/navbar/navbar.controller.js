@@ -4,13 +4,29 @@ angular.module('pupparoniApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
       'title': 'Home',
-      'link': '/'
+      'link': '/',
+      'type': 'menuItem'
     }, {
       'title': 'Products',
-      'link': '/productList'
+      'link': '/productList',
+      'type': 'menuItem'
     }, {
       'title': 'Company',
-      'link': '/company'
+      'link': '/company',
+      'type': 'dropdown',
+      'menu': [{
+        'title': 'Contact Info',
+        'link': '/company/contact',
+        'type': 'menuItem'
+        }, {
+          'title': 'Support',
+          'link': '/company/support',
+          'type': 'menuItem'
+        }, {
+          'title': 'Info',
+          'link': '/company/info',
+          'type': 'menuItem'
+        }]
     }];
 
     $scope.isCollapsed = true;
@@ -26,4 +42,12 @@ angular.module('pupparoniApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    $scope.isMenuItem = function(item) {
+      return item.type == 'menuItem';
+    }
+
+    $scope.isSubMenu = function(item) {
+      return item.type == 'dropdown';
+    }
   });
