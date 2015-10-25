@@ -16,7 +16,7 @@
         <ul class="phones">
           <li ng-repeat="product in productList | filter:query">
             <div id="{{product.productId}}" class="productListItem">
-              <div class="name">Name: <a href="/product">{{product.name}}</a></div>
+              <div class="name">Name: <a href="/api/products/{{product._id}}">{{product.name}}</a></div>
               <div class="productId">Product Id: {{product.productId}}</div>
               <div class="category">Category: {{product.category}}</div>
               <div class="shortDesc">Short: {{product.shortDescription}}</div>
