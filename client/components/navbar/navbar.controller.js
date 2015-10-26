@@ -7,6 +7,10 @@ angular.module('pupparoniApp')
       'link': '/',
       'type': 'menuItem'
     }, {
+      'title': 'ProductsX',
+      'link': '/productsX',
+      'type': 'menuItem'
+    }, {
       'title': 'Products',
       'link': '/productList',
       'type': 'menuItem'
