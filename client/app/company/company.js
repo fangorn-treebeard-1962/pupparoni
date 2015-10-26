@@ -13,5 +13,4 @@ angular.module('pupparoniApp')
         templateUrl: 'app/company/contact/company/contact.html',
         controller: 'CompanyContactCtrl'
       });
-    ;
   });
