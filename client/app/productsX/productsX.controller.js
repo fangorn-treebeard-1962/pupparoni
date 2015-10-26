@@ -2,13 +2,15 @@
 
 angular.module('pupparoniApp')
   .controller('ProductsXController',
-    ['$scope', 'productsXService', function ($scope, productsXService) {
-      $scope.getAllProducts=function(){
-        return productsXService.getAll();
-      };
+    ['$scope', '$http', 'productsXService', function ($scope, $http, productsXService) {
+      $scope.products = [];
 
-      $scope.products=$scope.getAllProducts();
-  }])
+      $http.get('/api/products').success(function(productList) {
+        $scope.products = productList;
+        //socket.syncUpdates('products', $scope.products);
+      });
+
+    }])
 
   .controller('ProductsXDetailsController',
     ['$stateParams', '$state', '$scope', 'productsXService', function ($stateParams, $state, $scope, productsXService) {
