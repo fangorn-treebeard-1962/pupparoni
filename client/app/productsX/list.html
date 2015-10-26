@@ -1,0 +1,48 @@
+<div class="col-md-12">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Sidebar content-->
+
+        Search: <input ng-model="query">
+
+      </div>
+      <div class="col-md-10">
+        <!--Body content-->
+
+        <h1>this is app/productsX/list.html</h1>
+        <ul class="phones">
+          <li ng-repeat="product in products | filter:query">
+            <div id="{{product.productId}}" class="productListItem">
+              <div class="name">Name:
+                <a ui-sref="productDetail({id:product._id,permalink:product.permalink})">{{product.name}}</a>
+              </div>
+              <div class="productId">Product Id: {{product.productId}}</div>
+              <div class="category">Category: {{product.category}}</div>
+              <div class="shortDesc">Short: {{product.shortDescription}}</div>
+              <div class="longDesc">Long: {{product.longDescription}}</div>
+              <div class="tags">tags: {{product.tags}}</div>
+              <div class="size">Size: {{product.size}}</div>
+              <div class="price">Price: ${{product.price}}</div>
+            </div>
+          </li>
+        </ul>
+
+        <hr>
+        <div>
+          <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
+            <i class="fa fa-facebook"></i> Connect with Facebook
+          </a>
+          <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
+            <i class="fa fa-google-plus"></i> Connect with Google+
+          </a>
+          <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
+            <i class="fa fa-twitter"></i> Connect with Twitter
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+</div>
