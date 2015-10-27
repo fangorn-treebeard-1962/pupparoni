@@ -5,15 +5,21 @@ angular.module('pupparoniApp')
     ['$scope', '$http', 'productsXService', function ($scope, $http, productsXService) {
       $scope.products = [];
 
-      $http.get('/api/products').success(function(productList) {
-        $scope.products = productList;
-        //socket.syncUpdates('products', $scope.products);
-      });
+      $scope.searchByName = function(name) {
+        productsXService.getProductByName(name).success(function(productList) {
+          $scope.products = productList;
+        });
+      };
 
+      productsXService.getAll().success(function(productList) {
+          $scope.products = productList;
+        });
     }])
 
   .controller('ProductsXDetailsController',
     ['$stateParams', '$state', '$scope', 'productsXService', function ($stateParams, $state, $scope, productsXService) {
+      $scope.singleProduct = {};
+
       $scope.getProductById=function(id){
         return productsXService.getProductById(id);
       };
@@ -22,6 +28,9 @@ angular.module('pupparoniApp')
         $state.go('allProducts');
       };
 
-      $scope.singleProduct=$scope.getProductById($stateParams.id);
+      console.log("in ProductsXDetailsController, id is " + $stateParams.id);
+      $scope.getProductById($stateParams.id).success(function(product) {
+        $scope.singleProduct=product;
+      });
 
   }]);
