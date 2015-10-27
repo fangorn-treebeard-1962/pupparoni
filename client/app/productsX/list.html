@@ -5,7 +5,14 @@
       <div class="col-md-2">
         <!--Sidebar content-->
 
-        Search: <input ng-model="query">
+        <label for="myFilter">Filter: </label><input id='myFilter' ng-model="myFilter">
+
+        <div id="searchParameters">
+          <br>
+          <br>
+          <label for="searchName">Name: </label><input id='searchName' ng-model="searchName">
+          <button ng-click="searchByName(searchName)">Search</button>
+        </div>
 
       </div>
       <div class="col-md-10">
@@ -13,7 +20,7 @@
 
         <h1>this is app/productsX/list.html</h1>
         <ul class="phones">
-          <li ng-repeat="product in products | filter:query">
+          <li ng-repeat="product in products | filter:myFilter">
             <div id="{{product.productId}}" class="productListItem">
               <div class="name">Name:
                 <a ui-sref="productDetail({id:product._id,permalink:product.permalink})">{{product.name}}</a>
