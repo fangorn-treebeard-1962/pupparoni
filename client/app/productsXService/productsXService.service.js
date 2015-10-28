@@ -9,8 +9,6 @@ angular.module('pupparoniApp')
     return {
 
       getAll: function() {
-        console.log("before");
-        console.dir(this.products);
         return $http.get('/api/products');
       },
 
