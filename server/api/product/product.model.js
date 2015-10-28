@@ -11,7 +11,8 @@ var ProductSchema = new Schema({
   longDescription:String,
   tags:[String],
   size:String,
-  price:Number
+  price:Number,
+  imageName:String
 
 });
 
