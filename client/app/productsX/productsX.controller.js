@@ -11,6 +11,14 @@ angular.module('pupparoniApp')
         });
       };
 
+      $scope.reset = function(name) {
+        $scope.myFilter = '';
+        $scope.searchName = '';
+        productsXService.getAll().success(function(productList) {
+          $scope.products = productList;
+        });
+      };
+
       productsXService.getAll().success(function(productList) {
           $scope.products = productList;
         });
