@@ -4,11 +4,17 @@
   <header class="hero-unit" id="banner">
     <div class="container">
       <h1>This is the company culdesac</h1>
-      <p>you should not see this page</p>
+      <p>you should not see this banner</p>
     </div>
   </header>
 
-  <div ng-view></div>
+  <ul class="menu">
+    <li><a ui-sref="company.contact">contact</a></li>
+    <li><a ui-sref="company.info">info</a></li>
+    <li><a ui-sref="company.support">support</a></li>
+  </ul>
+
+  <div ui-view></div>
 
   <footer class="footer">
     <div class="container">

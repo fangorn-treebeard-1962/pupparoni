@@ -11,10 +11,10 @@ angular.module('pupparoniApp')
       'link': '/productsX',
       'type': 'menuItem'
     }, {
-    //  'title': 'Products',
-    //  'link': '/productList',
-    //  'type': 'menuItem'
-    //}, {
+      'title': 'CompanySPA',
+      'link': '/company',
+      'type': 'menuItem'
+    }, {
       'title': 'Company',
       'link': '/company',
       'type': 'dropdown',
