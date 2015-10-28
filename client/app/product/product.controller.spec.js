@@ -17,14 +17,15 @@ describe('Controller: ProductCtrl', function () {
       .respond(function(method, url, data, headers, params) {
         return [200, {
           _id:"561ea3d67308c0544c108931",
-            name:"Siamese If You Please",
+          name:"Siamese If You Please",
           productId:"0001F",
           category:"Behavior",
           shortDescription:"Lavender based topical anti-stress therapy",
           longDescription:"Apply one dose weekly to your pet’s haircoat to reduce overall stress levels for your cat",
           tags:["lavender", "anti-stress", "feline"],
           size:"20 ml bottle",
-          price:"21.99"
+          price:"21.99",
+          imageName:'Classic_bugsbunny.png'
         }];
       });
     scope = $rootScope.$new();
