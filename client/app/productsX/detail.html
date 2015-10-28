@@ -1,13 +1,17 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="col-md-12">
-This is the product view.
+  <header class="hero-unit" id="banner">
+    <div class="container">
+      <h1>Detailed Product View</h1>
+      <p class="lead">this is app/productsX/detail.html</p>
+    </div>
+  </header>
 
   <div id="{{singleProduct.productId}}" class="productListItem">
     <span class="pull-right cross-btn" ng-click="closeProduct()">&times;</span>
-    <div class="name">Name:
-      <a ui-sref="singlePost({id:post._id,permalink:post.permalink})">{{singleProduct.name}}</a>
-    </div>
+    <img src="assets/images/{{singleProduct.imageName}}" alt="{{singleProduct.name}}" height="150">
+    <div class="name">Name: {{singleProduct.name}}</div>
     <div class="productId">Product Id: {{singleProduct.productId}}</div>
     <div class="category">Category: {{singleProduct.category}}</div>
     <div class="shortDesc">Short: {{singleProduct.shortDescription}}</div>
