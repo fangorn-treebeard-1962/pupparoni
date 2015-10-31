@@ -10,7 +10,7 @@
 
   <div id="{{singleProduct.productId}}" class="productListItem">
     <span class="pull-right cross-btn" ng-click="closeProduct()">&times;</span>
-    <img src="assets/images/{{singleProduct.imageName}}" alt="{{singleProduct.name}}" height="150">
+    <img ng-src="assets/images/{{singleProduct.imageName}}" alt="{{singleProduct.name}}" height="150">
     <div class="name">Name: {{singleProduct.name}}</div>
     <div class="productId">Product Id: {{singleProduct.productId}}</div>
     <div class="category">Category: {{singleProduct.category}}</div>
@@ -19,6 +19,12 @@
     <div class="tags">tags: {{singleProduct.tags}}</div>
     <div class="size">Size: {{singleProduct.size}}</div>
     <div class="price">Price: ${{singleProduct.price}}</div>
+  </div>
+
+  <div class="purchase">
+    <label for="quantity">Quantity:
+    </label><input id="quantity" class="quantity" size="2" type="text" ng-model="singleProduct.quantity"/>
+    <button type="submit" ng-click="addToCart(singleProduct)">Purchase</button>
   </div>
 
 </div>

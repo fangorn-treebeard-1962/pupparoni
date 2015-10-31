@@ -3,7 +3,7 @@
 angular.module('pupparoniApp')
   .controller('ProductsXController',
     ['$scope', '$http', 'productsXService', function ($scope, $http, productsXService) {
-      $scope.products = [];
+      $scope.products = {};
 
       $scope.searchByName = function(name) {
         productsXService.getProductByName(name).success(function(productList) {
@@ -26,7 +26,7 @@ angular.module('pupparoniApp')
 
   .controller('ProductsXDetailsController',
     ['$stateParams', '$state', '$scope', 'productsXService', function ($stateParams, $state, $scope, productsXService) {
-      $scope.singleProduct = {};
+      $scope.singleProduct = {quantity:1};
 
       $scope.getProductById=function(id){
         return productsXService.getProductById(id);
@@ -36,9 +36,27 @@ angular.module('pupparoniApp')
         $state.go('allProducts');
       };
 
+      $scope.addToCart = function(product) {
+        console.log("adding to cart" + product.name);
+
+        var order = localStorage.getItem('cart.product');
+        if (localStorage.getItem(('cart.product')) === null) {
+          var obj = [$scope.singleProduct];
+          localStorage.setItem('cart.product', JSON.stringify(obj));
+        } else {
+          var obj = JSON.parse(localStorage.getItem(('cart.product')));
+          obj.push($scope.singleProduct);
+          localStorage.setItem('cart.product', JSON.stringify(obj));
+        }
+
+        alert($scope.singleProduct.name + " added to cart.");
+      };
+
       console.log("in ProductsXDetailsController, id is " + $stateParams.id);
       $scope.getProductById($stateParams.id).success(function(product) {
         $scope.singleProduct=product;
+        $scope.singleProduct.quantity = 1;
+        // to get back: JSON.parse(localStorage.setItem('cart.product'))
       });
 
   }]);
