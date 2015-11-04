@@ -11,24 +11,20 @@ angular.module('pupparoniApp')
       'link': '/productsX',
       'type': 'menuItem'
     }, {
-      'title': 'CompanySPA',
-      'link': '/company',
-      'type': 'menuItem'
-    }, {
       'title': 'Company',
       'link': '/company',
       'type': 'dropdown',
       'menu': [{
         'title': 'Contact Info',
-        'link': '/company/contact',
+        'link': '/companycontact',
         'type': 'menuItem'
         }, {
           'title': 'Support',
-          'link': '/company/support',
+          'link': '/companysupport',
           'type': 'menuItem'
         }, {
           'title': 'Info',
-          'link': '/company/info',
+          'link': '/companyinfo',
           'type': 'menuItem'
         }]
     }];
@@ -49,7 +45,7 @@ angular.module('pupparoniApp')
 
     $scope.isMenuItem = function(item) {
       return item.type == 'menuItem';
-    }
+    };
 
     $scope.isSubMenu = function(item) {
       return item.type == 'dropdown';
