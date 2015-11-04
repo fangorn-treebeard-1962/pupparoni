@@ -3,7 +3,7 @@
 angular.module('pupparoniApp')
   .controller('ProductsXController',
     ['$scope', '$http', 'productsXService', function ($scope, $http, productsXService) {
-      $scope.products = {};
+      $scope.products = [];
 
       $scope.searchByName = function(name) {
         productsXService.getProductByName(name).success(function(productList) {
@@ -11,7 +11,7 @@ angular.module('pupparoniApp')
         });
       };
 
-      $scope.reset = function(name) {
+      $scope.reset = function() {
         $scope.myFilter = '';
         $scope.searchName = '';
         productsXService.getAll().success(function(productList) {
@@ -40,14 +40,12 @@ angular.module('pupparoniApp')
         console.log("adding to cart" + product.name);
 
         var order = localStorage.getItem('cart.product');
-        if (localStorage.getItem(('cart.product')) === null) {
-          var obj = [$scope.singleProduct];
-          localStorage.setItem('cart.product', JSON.stringify(obj));
-        } else {
-          var obj = JSON.parse(localStorage.getItem(('cart.product')));
-          obj.push($scope.singleProduct);
-          localStorage.setItem('cart.product', JSON.stringify(obj));
+        var obj = [];
+        if (order !== null) {
+          obj = JSON.parse(localStorage.getItem(('cart.product')));
         }
+        obj.push($scope.singleProduct);
+        localStorage.setItem('cart.product', JSON.stringify(obj));
 
         alert($scope.singleProduct.name + " added to cart.");
       };
