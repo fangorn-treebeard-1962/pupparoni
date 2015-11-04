@@ -1,7 +1,13 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="col-md-12">
-This is the cart view.
+
+  <header class="hero-unit" id="banner">
+    <div class="container">
+      <h1>Shopping Cart</h1>
+      <p class="lead">Hello {{ getCurrentUser().name }}. This is the cart view.</p>
+    </div>
+  </header>
 
   <div ng-show="cartContents">
     <table>
@@ -12,7 +18,7 @@ This is the cart view.
         <td>{{ orderItem.name }}</td>
         <td>{{ orderItem.quantity }}</td>
         <td>${{ orderItem.price }}</td>
-        <td>${{ orderItem.quantity * orderItem.price }}</td>
+        <td>${{ (orderItem.quantity * orderItem.price).toFixed(2) }}</td>
       </tr>
       <tr >
         <td>&nbsp;</td>

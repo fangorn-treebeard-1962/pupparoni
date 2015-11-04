@@ -1,22 +1,24 @@
 'use strict';
 
 angular.module('pupparoniApp')
-  .controller('CartCtrl', function ($scope) {
+  .controller('CartCtrl', function ($scope, Auth) {
     var contentString = window.localStorage.getItem('cart.product');
 
-    if (contentString != null) {
-      $scope.cartContents = JSON.parse(window.localStorage.getItem('cart.product'));
+    $scope.updateTotals = function() {
 
-      $scope.subTotal = 110.00;
-      $scope.tax = $scope.subTotal * .08;
-      $scope.orderTotal = $scope.subTotal + $scope.tax;
+      var sum = $scope.cartContents.reduce(function(previousValue, currentValue) {
+          console.log("previousValue, currentValue, sum = (" + previousValue + ', ' + currentValue + ', ' + sum + ')');
+          return previousValue + Number.parseFloat(currentValue.price) * Number.parseInt(currentValue.quantity);
+        }, 0.0
+      );
+      console.log("sum = " + sum);
 
-      $scope.shipping = {
-        zip:'',
-        estimates:[],
-        show:false
-      };
-    }
+      $scope.subTotal = sum.toFixed(2);
+      $scope.tax = ($scope.subTotal * .08).toFixed(2);
+      $scope.orderTotal = (Number.parseFloat($scope.subTotal) + Number.parseFloat($scope.tax)).toFixed(2);
+    };
+
+    $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.serviceCodeDesc = {
       '01': 'Next Day Air',
@@ -49,9 +51,19 @@ angular.module('pupparoniApp')
       $scope.response = returnRatesResponse();
       console.dir($scope.response);
 
+    };
+
+    if (contentString != null) {
+      $scope.cartContents = JSON.parse(window.localStorage.getItem('cart.product'));
+
+      $scope.shipping = {
+        zip:'',
+        estimates:[],
+        show:false
+      };
+
+      $scope.updateTotals();
     }
-
-
   });
 
 function returnRatesResponse() {
