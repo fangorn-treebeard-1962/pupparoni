@@ -1,3 +1,5 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
 <div class="col-md-12">
 This is the cart view.
 
@@ -45,9 +47,9 @@ This is the cart view.
         <tr>
           <th>Type</th><th>Cost</th>
         </tr>
-        <tr ng-repeat="estimate in shipping.estimates">
-          <td>{{ estimate.type }}</td>
-          <td>${{ estimate.cost }}</td>
+        <tr ng-repeat="shipment in response.RatedShipment | orderBy: 'TotalCharges.MonetaryValue'">
+          <td>{{ getServiceCodeDesc(shipment.Service.Code) }}</td>
+          <td>${{ shipment.TotalCharges.MonetaryValue }}</td>
         </tr>
       </table>
     </div>
