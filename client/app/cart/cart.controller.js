@@ -4,6 +4,13 @@ angular.module('pupparoniApp')
   .controller('CartCtrl', function ($scope, Auth) {
     var contentString = window.localStorage.getItem('cart.product');
 
+    $scope.deleteOrderItem = function(index) {
+      console.log('delete was pressed: [' + index + ']');
+      $scope.cartContents.splice(index, 1);
+      $scope.updateTotals();
+    };
+
+
     $scope.updateTotals = function() {
 
       var sum = $scope.cartContents.reduce(function(previousValue, currentValue) {

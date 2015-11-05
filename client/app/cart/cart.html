@@ -150,8 +150,8 @@
 
                       <div class="a-row sc-action-links">
                         <span class="a-size-small sc-action-delete">
-                          <span class="a-declarative" data-action="sc-item-action" data-sc-item-action="{&quot;isWishListItem&quot;:null,&quot;isFresh&quot;:0,&quot;action&quot;:&quot;delete&quot;,&quot;itemType&quot;:&quot;active&quot;,&quot;itemID&quot;:&quot;CCUB1RE37RYU4&quot;}">
-                            <input type="submit" name="submit.delete.CCUB1RE37RYU4" value="Delete" aria-label="Delete The Damascus Cover (The Jerusalem Spy Series Book 1)">
+                          <span class="a-declarative" data-action="sc-item-action" ng-click="deleteOrderItem($index)">
+                            <input type="submit" name="submit.delete.{{orderItem.productId}}" value="Delete" aria-label="Delete {{orderItem.name}}">
                           </span>
                         </span>
                       </div><!-- for sc-action-links -->
@@ -172,6 +172,7 @@
                   <p></p>
                   <p></p>
                 </div> <!-- for price column -->
+
                 <div class="a-column a-span2 a-text-right sc-action-links a-span-last">
                   <div data-old-value="1" class="a-row a-spacing-base sc-action-quantity sc-action-quantity-right">
                     <div class="sc-invisible-when-no-js">
