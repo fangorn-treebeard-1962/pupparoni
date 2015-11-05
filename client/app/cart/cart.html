@@ -176,39 +176,12 @@
                 <div class="a-column a-span2 a-text-right sc-action-links a-span-last">
                   <div data-old-value="1" class="a-row a-spacing-base sc-action-quantity sc-action-quantity-right">
                     <div class="sc-invisible-when-no-js">
-                      <span class="a-dropdown-container">
-                        <label class="a-native-dropdown"><span class="sc-offscreen-label" aria-label="Quantity"></span></label>
-                        <select name="quantity" autocomplete="off" class="a-native-dropdown a-button-span8">
-                          <option value="1" data-a-css-class="quantity-option" selected=""> 1 </option>
-                          <option value="2" data-a-css-class="quantity-option"> 2 </option>
-                          <option value="3" data-a-css-class="quantity-option"> 3 </option>
-                          <option value="4" data-a-css-class="quantity-option"> 4 </option>
-                          <option value="5" data-a-css-class="quantity-option"> 5 </option>
-                          <option value="6" data-a-css-class="quantity-option"> 6 </option>
-                          <option value="7" data-a-css-class="quantity-option"> 7 </option>
-                          <option value="8" data-a-css-class="quantity-option"> 8 </option>
-                          <option value="9" data-a-css-class="quantity-option"> 9 </option>
-                          <option value="10" data-a-css-class="quantity-option quantity-option-10">10+</option>
-                        </select>
-                        <span tabindex="-1" data-a-class="quantity" class="a-button a-button-dropdown a-button-small a-button-span8 quantity" id="a-autoid-3" style="min-width: 0%;">
-                          <span class="a-button-inner">
-                            <span class="a-button-text a-declarative" data-action="a-dropdown-button" aria-haspopup="true" role="button" tabindex="0" id="a-autoid-3-announce">
-                              <span class="a-dropdown-label">
-                                <span class="sc-offscreen-label" aria-label="Quantity"></span>
-                              </span>
-                              <span class="a-dropdown-prompt"> 1 </span>
-                            </span>
 
-                            <i class="a-icon a-icon-dropdown"></i>
-                          </span>
-                        </span>
-                      </span>
-
-                      <input type="text" maxlength="3" autocomplete="off" name="quantityBox" class="a-input-text a-span8 sc-quantity-textfield sc-hidden">
-                      <div class="a-spacing-top-small">
-                        <span class="a-button a-button-primary a-button-small sc-update-link aok-hidden a-span8" id="a-autoid-4">
+                      <input type="text" ng-model="orderItem.quantity" maxlength="3" autocomplete="off" name="quantityBox" class="a-input-text a-span8 sc-quantity-textfield" ng-change="checkQuantityChange($index)">
+                      <div class="a-spacing-top-small" ng-show="updateButton[$index]">
+                        <span class="a-button a-button-primary a-button-small sc-update-link a-span8" id="a-autoid-4">
                           <span class="a-button-inner">
-                            <a href="javascript:void(0);" data-action="update" class="a-button-text" role="button" id="a-autoid-4-announce">
+                            <a href="javascript:void(0);" data-action="update" class="a-button-text" role="button" id="a-autoid-4-announce" ng-click="changeQuantity($index)">
                               Update
                               <span class="aok-offscreen">The Damascus Cover (The Jerusalem Spy Series Book 1)</span>
                             </a>
