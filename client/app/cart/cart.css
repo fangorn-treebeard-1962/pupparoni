@@ -1200,3 +1200,6 @@ ul.sc-pantry-bundle-content-ul li.last {
   opacity: .8
 }
 
+div#sc-active-cart {
+  width: 800px;
+}
