@@ -7,9 +7,13 @@ angular.module('pupparoniApp')
     $scope.updateTotals = function() {
 
       var sum = $scope.cartContents.reduce(function(previousValue, currentValue) {
-          console.log("previousValue, currentValue, sum = (" + previousValue + ', ' + currentValue + ', ' + sum + ')');
           return previousValue + Number.parseFloat(currentValue.price) * Number.parseInt(currentValue.quantity);
         }, 0.0
+      );
+
+      $scope.numItems = $scope.cartContents.reduce(function(previousValue, currentValue) {
+          return previousValue + Number.parseInt(currentValue.quantity);
+        }, 0
       );
       console.log("sum = " + sum);
 
