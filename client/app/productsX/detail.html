@@ -1,3 +1,10 @@
+<link rel="stylesheet" href="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/AmazonUI-161d81ecb75e65234bdc9087cc8ee3b3a8dedb6b._V2_.css#AUIClients/AmazonUI.rendering_engine-not-trident.secure.weblab-AUI_BOLT_51922-T1.min" />
+<link rel="stylesheet" href="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/CartD12nAssets-4de4f3b98c7612f95bc8c5eaccd9d2930ade6aff._V2_.css#AUIClients/CartD12nAssets.secure.min" />
+<link type='text/css' href='https://images-na.ssl-images-amazon.com/images/G/01/browser-scripts/us-site-wide-css-beacon/site-wide-6800426958._V1_.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/NavAuiBeaconbeltAssets-2819c53bdf8c34861feb575a90bfceb2225f6876._V2_.css#AUIClients/NavAuiBeaconbeltAssets.secure.min" />
+<link rel="stylesheet" href="https://images-na.ssl-images-amazon.com/images/I/01h78L-cgLL._RC|216JPxetzfL.css_.css#AUIClients/NavMetaAsset" />
+<link rel="stylesheet" href="http://z-ecx.images-amazon.com/images/I/61XWDh9KhCL._RC%7C21PJbL+KWrL.css,11lY8mYpb3L.css,01IY99sMV0L.css,31u8s49rTpL.css,01gngw0Og0L.css,01Zix61jLSL.css,21046uUw5+L.css,11xRy3bSkOL.css,51F6Y2R4lGL.css,01IYJsHQbtL.css,01OjVrFGeBL.css,01fpkPjl1dL.css,21moDHkDWGL.css,11MXghh1eBL.css,01hvfEvfPgL.css,01rgQ3jqo7L.css,01c3JrM3rnL.css,416CAvfEqkL.css,11XkfseId-L.css_.css#AUIClients/USHardlinesDetailPageMetaAsset" />
+
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="col-md-12">
@@ -7,24 +14,178 @@
       <p class="lead">this is app/productsX/detail.html</p>
     </div>
   </header>
-
-  <div id="{{singleProduct.productId}}" class="productListItem">
-    <span class="pull-right cross-btn" ng-click="closeProduct()">&times;</span>
-    <img ng-src="assets/images/{{singleProduct.imageName}}" alt="{{singleProduct.name}}" height="150">
-    <div class="name">Name: {{singleProduct.name}}</div>
-    <div class="productId">Product Id: {{singleProduct.productId}}</div>
-    <div class="category">Category: {{singleProduct.category}}</div>
-    <div class="shortDesc">Short: {{singleProduct.shortDescription}}</div>
-    <div class="longDesc">Long: {{singleProduct.longDescription}}</div>
-    <div class="tags">tags: {{singleProduct.tags}}</div>
-    <div class="size">Size: {{singleProduct.size}}</div>
-    <div class="price">Price: ${{singleProduct.price}}</div>
+  <div id="wayfinding-breadcrumbs_feature_div" class="a-subheader a-breadcrumb feature" data-feature-name="wayfinding-breadcrumbs">
+    <ul class="a-horizontal a-size-small">
+      <li class="a-breadcrumb-divider"><span class="a-list-item a-color-tertiary">
+            ‹
+        </span></li>
+      <li><span class="a-list-item">
+            <a id="breadcrumb-back-link" class="a-link-normal a-color-tertiary" href="http://www.amazon.com/s/ref=nb_sb_ss_xo_0_10?url=search-alias%3Dbeauty&amp;field-keywords=olay+regenerist&amp;sprefix=olay+regenerist%2Celectronics%2C173" onclick="if(history.length > 1) { history.back(); return false; }">
+              Back to product list
+            </a>
+        </span></li>
+    </ul>
   </div>
 
-  <div class="purchase">
-    <label for="quantity">Quantity:
-    </label><input id="quantity" class="quantity" size="2" type="text" ng-model="singleProduct.quantity"/>
-    <button type="submit" ng-click="addToCart(singleProduct)">Purchase</button>
-  </div>
+  <div class="a-container">
+    <div id="rightCol" class="rightCol">
+      <div id="tellAFriendBox_feature_div" class="feature" data-feature-name="tellAFriendBox">
+        <div class="a-box-group">
+          <div class="a-box">
+            <div class="a-box-inner a-padding-null">
+              <div class="a-row a-spacing-mini">
+                <div class="a-column a-span12 a-text-center a-spacing-small">
+                  <div id="selectQuantity" class="a-section a-spacing-none a-padding-none">
+                    <span class="a-declarative" data-action="quantity-dropdown" data-quantity-dropdown="{}">
 
+                      <span class="a-dropdown-container">
+                        <label for="quantity" class="a-native-dropdown">Qty:</label>
+                        <select ng-model="singleProduct.quantity" name="quantity" autocomplete="off" id="quantity" class="a-native-dropdown">
+                          <option value="1" selected="">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
+                        </select>
+                        <span tabindex="-1" class="a-button a-button-dropdown a-button-small" id="a-autoid-0" style="min-width: 0%;">
+                          <span class="a-button-inner">
+                            <span class="a-button-text a-declarative" data-action="a-dropdown-button" aria-haspopup="true" role="button" tabindex="0" id="a-autoid-0-announce">
+                              <span class="a-dropdown-label">Qty:</span>
+                              <span class="a-dropdown-prompt">1</span>
+                            </span>
+                            <i class="a-icon a-icon-dropdown"></i>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="a-button-stack">
+                <span id="submit.add-to-cart" class="a-button a-spacing-small a-button-primary a-button-icon">
+                  <span class="a-button-inner">
+                    <i class="a-icon a-icon-cart"></i>
+                    <input ng-click="addToCart(singleProduct)" id="add-to-cart-button" name="submit.add-to-cart" title="Add to Shopping Cart" data-hover="Select <b>__dims__</b> from the left<br> to add to Shopping Cart" class="a-button-input" type="submit" value="Add to Cart" aria-labelledby="submit.add-to-cart-announce">
+                    <span id="submit.add-to-cart-announce" class="a-button-text" aria-hidden="true">Add to Cart</span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="leftCol" class="leftCol"  style="display:block;float:left;width: 34.4%;">
+      <div id="imageBlock_feature_div" class="feature" data-feature-name="imageBlock">
+        <div id="imageBlock" aria-hidden="true" class="a-section">
+          <div class="a-fixed-left-grid"><div class="a-fixed-left-grid-inner" style="padding-left:32px">
+
+
+
+            <div class="a-text-center a-fixed-left-grid-col a-col-right" style="padding-left:1%;*width:98.6%;float:left;">
+              <div id="twister-main-image" class="a-hidden" customfunctionname="(function(id, state){ P.when('A').execute(function(A){ A.trigger('image-block-twister-swatch-hover', id, state); }); });"></div>
+              <div class="a-row a-spacing-none a-grid-vertical-align a-grid-center canvas ie7-width-96" style="cursor: pointer;">
+                <div id="main-image-container" class="a-dynamic-image-container" style="height: 295px;"><div id="video-outer-container"><div id="main-video-container" class="chromeful-container"></div></div>
+
+                  <input id="show-immersive-view-on-softlines" type="hidden" value="false">
+
+                  <!--     Creating a custom overlay for image not available experience -->
+                  <div class="variationUnavailable unavailableExp" style="display: none;">
+                    <div class="inner">
+
+                      <div class="a-box a-alert a-alert-error"><div class="a-box-inner a-alert-container"><h4 class="a-alert-heading">Image Unavailable</h4><i class="a-icon a-icon-alert"></i><div class="a-alert-content">
+              <span class="a-text-bold">
+                  Image not available for<br>Color:
+                  <span class="unvailableVariation"></span>
+              </span>
+                      </div></div></div>
+                    </div>
+                  </div>
+                  <div class="a-hidden" id="auiImmersiveViewDiv"></div>
+                  <ul class="a-nostyle a-horizontal list maintain-height">
+                    <li class="image                  item itemNo0 maintain-height selected"><span class="a-list-item">
+                      <span class="a-declarative" data-action="main-image-click" data-main-image-click="{}">
+                          <div id="imgTagWrapperId" class="imgTagWrapper" style="height: 295px;">
+
+                            <img ng-src="assets/images/{{singleProduct.imageName}}" alt="{{singleProduct.name}}"
+                                 data-old-hires="" class="a-dynamic-image" id="landingImage"
+                                 style="max-height: 295px; ">
+
+                          </div>
+                      </span>
+                  </span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div id="authorizedRetailerLogo_feature_div" class="feature" data-feature-name="authorizedRetailerLogo">
+      </div>
+    </div>
+
+    <div id="centerCol" class="centerColAlign">
+      <div id="{{singleProduct.productId}}" class="productListItem">
+        <span id="productTitle" class="a-size-large">{{singleProduct.name}}</span>
+        <span class="a-color-secondary pull-right">{{singleProduct.category}}</span>
+
+        <div class="size">Size: {{singleProduct.size}}</div>
+        <hr>
+        <div>
+          <span id="priceblock_ourprice_lbl" class="a-color-secondary a-size-base">Price:</span>
+          <span id="priceblock_ourprice" class="a-size-medium a-color-price">${{singleProduct.price}}</span>
+        </div>
+        <div class="productId">Product Id: {{singleProduct.productId}}</div>
+        <div id="availability_feature_div" class="feature" data-feature-name="availability">
+          <div id="availability" class="a-section a-spacing-none">
+            <span class="a-size-medium a-color-success">In Stock.</span>
+          </div>
+          <div class="a-section a-spacing-none"></div>
+        </div>
+        <br />
+        <div class="longDesc">{{singleProduct.longDescription}}</div>
+
+        <div id="featurebullets_feature_div" class="feature" data-feature-name="featurebullets">
+
+          <div id="feature-bullets" class="a-section a-spacing-medium a-spacing-top-small">
+            <ul class="a-vertical a-spacing-none">
+              <li ng-repeat="tag in singleProduct.tags">
+                <span class="a-list-item">{{tag}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
