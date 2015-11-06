@@ -14,6 +14,19 @@
       <p class="lead">Hello {{ getCurrentUser().name }}. This is the cart view.</p>
     </div>
   </header>
+  <div id="wayfinding-breadcrumbs_feature_div" class="a-subheader a-breadcrumb feature" data-feature-name="wayfinding-breadcrumbs">
+    <ul class="a-horizontal a-size-small">
+      <li class="a-breadcrumb-divider"><span class="a-list-item a-color-tertiary">
+            ‹
+        </span></li>
+      <li><span class="a-list-item">
+            <a id="breadcrumb-back-link" class="a-link-normal a-color-tertiary" href="http://www.amazon.com/s/ref=nb_sb_ss_xo_0_10?url=search-alias%3Dbeauty&amp;field-keywords=olay+regenerist&amp;sprefix=olay+regenerist%2Celectronics%2C173" onclick="if(history.length > 1) { history.back(); return false; }">
+              Back to product list
+            </a>
+        </span></li>
+    </ul>
+  </div>
+
 
   <div ng-show="cartContents" class="a-fixed-right-grid-col a-col-right" style="width:300px;float:right;">
     <div class="a-box a-color-alternate-background">
