@@ -2,7 +2,7 @@
 
 angular.module('pupparoniApp')
   .controller('ProductsXController',
-    ['$scope', '$http', 'productsXService', function ($scope, $http, productsXService) {
+    ['$scope', 'productsXService', function ($scope, productsXService) {
       $scope.products = [];
 
       $scope.searchByName = function(name) {
@@ -28,8 +28,11 @@ angular.module('pupparoniApp')
     ['$stateParams', '$state', '$scope', 'productsXService', function ($stateParams, $state, $scope, productsXService) {
       $scope.singleProduct = {quantity:1};
 
-      $scope.getProductById=function(id){
-        return productsXService.getProductById(id);
+      $scope.getProductById=function(id) {
+        productsXService.getProductById(id).success(function(product) {
+          $scope.singleProduct = product;
+          $scope.singleProduct.quantity = 1;
+        });
       };
 
       $scope.closeProduct=function(){
@@ -51,10 +54,7 @@ angular.module('pupparoniApp')
       };
 
       console.log("in ProductsXDetailsController, id is " + $stateParams.id);
-      $scope.getProductById($stateParams.id).success(function(product) {
-        $scope.singleProduct=product;
-        $scope.singleProduct.quantity = 1;
-        // to get back: JSON.parse(localStorage.setItem('cart.product'))
-      });
+      $scope.getProductById($stateParams.id);
+      // to get back: JSON.parse(localStorage.setItem('cart.product'))
 
   }]);
