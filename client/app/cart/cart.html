@@ -234,12 +234,15 @@
     <button type="submit" ng-click="showShippingFunc()">Proceed to Checkout</button>
   </div>
 
-  <div ng-show="shipping.show">
+  <div ng-hide="shipping.show">
     <div>Shipping</div>
     <label for="shippingZip">Enter ZipCode</label><input type="text" ng-model="shipping.zip" id="shippingZip"/>
     <button type="submit" ng-click="estimateShippingCosts()">Estimate Shipping Costs</button>
     <img height='25' ng-src="assets/images/UPS_LOGO_S.gif" alt="UPS">
 
+    <p>
+      UPS Shipping Estimates for ZIP Code {{response.shipTo.address.postal_code}}
+    </p>
     <div ng-show="shipping.estimates.length">
       <table>
         <tr>
