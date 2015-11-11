@@ -7,6 +7,7 @@ angular.module('pupparoniApp')
 
     // Public API here
     return {
+      products: [{name: 'product1'}],
 
       getAll: function() {
         return $http.get('/api/products');
@@ -18,6 +19,7 @@ angular.module('pupparoniApp')
 
       getProductByName: function(name) {
         return $http.get('/api/products/name/'+name);
-      }
+      },
+
     };
   }]);
