@@ -14,6 +14,11 @@ describe('GET /api/products', function() {
       .end(function(err, res) {
         if (err) return done(err);
         res.body.should.be.instanceof(Array);
+
+        var resultArray = res.body;
+        resultArray.should.have.property('length', 1);
+        resultArray[0].should.have.property('productId', '0001C');
+        resultArray[0].should.have.property('name', 'Pugly');
         done();
       });
   });
@@ -71,13 +76,24 @@ describe('GET /api/products/<field>/<value>', function() {
 
   it('should respond with JSON object for productId lookup', function(done) {
     request(app)
-      .get('/api/products/productId/productId')
+      .get('/api/products/productId/0001C')
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
         res.body.should.be.instanceof(Object);
+
+        var resultArray = res.body;
+        resultArray[0].should.have.property('productId', '0001C');
+        resultArray[0].should.have.property('name', 'Pugly');
         done();
       });
+  });
+
+  it('should respond with 404 for a bogus type lookup', function(done) {
+    request(app)
+      .get('/api/products/bogus/productId')
+      .expect(404)
+      .end(done());
   });
 });
