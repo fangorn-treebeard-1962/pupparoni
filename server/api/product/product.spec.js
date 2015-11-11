@@ -16,9 +16,9 @@ describe('GET /api/products', function() {
         res.body.should.be.instanceof(Array);
 
         var resultArray = res.body;
-        resultArray.should.have.property('length', 1);
-        resultArray[0].should.have.property('productId', '0001C');
-        resultArray[0].should.have.property('name', 'Pugly');
+        resultArray.should.have.property('length', 13);
+        resultArray[0].should.have.property('productId', '0001F');
+        resultArray[0].should.have.property('name', 'Siamese If You Please');
         done();
       });
   });
