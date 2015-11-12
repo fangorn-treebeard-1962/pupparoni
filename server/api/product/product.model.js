@@ -10,9 +10,15 @@ var ProductSchema = new Schema({
   shortDescription:String,
   longDescription:String,
   tags:[String],
-  size:String,
   price:Number,
-  imageName:String
+  imageName:String,
+  packaging:String,
+  size: {
+    width: Number,
+    height: Number,
+    depth: Number,
+    weightInOunces: Number
+  }
 
 });
 
