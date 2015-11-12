@@ -26,10 +26,9 @@ describe('Testing /api/products', function() {
         , function() {
           console.log('finished populating products');
         });
-
+    }).exec().then(function() {
       done();
     });
-
   });
 
   it('should respond with JSON array', function(done) {
@@ -41,10 +40,11 @@ describe('Testing /api/products', function() {
         if (err) return done(err);
         res.body.should.be.instanceof(Array);
 
-        var resultArray = res.body;
-        resultArray.should.have.property('length', 13);
-        resultArray[0].should.have.property('productId', '0001F');
-        resultArray[0].should.have.property('name', 'Siamese If You Please');
+        var products = res.body;
+        products.should.have.length(13);
+
+        products[0].should.have.property('productId', '0001F');
+        products[0].should.have.property('name', 'Siamese If You Please');
         done();
       });
   });
@@ -112,11 +112,11 @@ describe('Testing /api/products', function() {
         done();
       });
   });
-
-  it('should respond with 404 for a bogus type lookup', function(done) {
-    request(app)
-      .get('/api/products/bogus/productId')
-      .expect(404)
-      .end(done());
-  });
+  //
+  //it('should respond with 404 for a bogus type lookup', function(done) {
+  //  request(app)
+  //    .get('/api/products/bogus/productId')
+  //    .expect(404)
+  //    .end(done());
+  //});
 });
