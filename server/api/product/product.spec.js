@@ -90,7 +90,7 @@ describe('Testing /api/products', function() {
       });
   });
 
-  it('should respond with JSON object for productId lookup', function(done) {
+  it('should respond with an array of 1 product for productId lookup', function(done) {
     request(app)
       .get('/api/products/productId/20001C')
       .expect(200)
@@ -100,16 +100,52 @@ describe('Testing /api/products', function() {
         res.body.should.be.instanceof(Object);
 
         var resultArray = res.body;
+        resultArray.should.have.length(1);
         resultArray[0].should.have.property('productId', '20001C');
         resultArray[0].should.have.property('name', 'Pugly');
         done();
       });
   });
-  //
-  //it('should respond with 404 for a bogus type lookup', function(done) {
-  //  request(app)
-  //    .get('/api/products/bogus/productId')
-  //    .expect(404)
-  //    .end(done());
-  //});
+
+  it('should respond with empty array for unknown productId lookup', function(done) {
+    request(app)
+      .get('/api/products/productId/XXXXX')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if (err) return done(err);
+        res.body.should.be.instanceof(Array);
+
+        var products = res.body;
+        products.should.have.length(0);
+        done();
+      });
+  });
+
+  it('should respond with 404 for a bogus type lookup', function(done) {
+    request(app)
+      .get('/api/products/bogus/productId')
+      .expect(404)
+      .end(done);
+  });
+
+  it('should respond with JSON object for id lookup', function(done) {
+    Product.find({name:'Pugly'}, function (err, product) {
+      if(err) { throw err; }
+      if(!product) { throw err; }
+
+      request(app)
+        .get('/api/products/' + product[0]._id)
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end(function(err, res) {
+          if (err) return done(err);
+          res.body.should.be.instanceof(Object);
+          res.body.should.have.property('productId', '20001C');
+          res.body.should.have.property('name', 'Pugly');
+          done();
+        });
+    });
+  });
+
 });
