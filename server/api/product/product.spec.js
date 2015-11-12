@@ -24,7 +24,7 @@ describe('Testing /api/products', function() {
     });
   });
 
-  it('should respond with JSON array', function(done) {
+  it('should respond with JSON array for /api/products/', function(done) {
     request(app)
       .get('/api/products/')
       .expect(200)
@@ -42,7 +42,7 @@ describe('Testing /api/products', function() {
       });
   });
 
-  it('should respond with JSON array for name lookup', function(done) {
+  it('should respond with JSON array for name lookup Siamese If You Please', function(done) {
     request(app)
       .get('/api/products/name/Siamese If You Please')
       .expect(200)
@@ -54,7 +54,7 @@ describe('Testing /api/products', function() {
       });
   });
 
-  it('should respond with JSON array for category lookup', function(done) {
+  it('should respond with JSON array for category lookup Behavior', function(done) {
     request(app)
       .get('/api/products/category/Behavior')
       .expect(200)
@@ -62,30 +62,37 @@ describe('Testing /api/products', function() {
       .end(function(err, res) {
         if (err) return done(err);
         res.body.should.be.instanceof(Array);
+        var products = res.body;
+        products.should.have.length(5);
+
         done();
       });
   });
 
-  it('should respond with JSON array for tag lookup', function(done) {
+  it('should respond with JSON array for tag lookup herbal', function(done) {
     request(app)
-      .get('/api/products/tag/soothing')
+      .get('/api/products/tag/herbal')
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
         res.body.should.be.instanceof(Array);
+        var products = res.body;
+        products.should.have.length(2);
         done();
       });
   });
 
-  it('should respond with JSON array for description lookup', function(done) {
+  it('should respond with JSON array for description lookup tonic', function(done) {
     request(app)
-      .get('/api/products/description/treat')
+      .get('/api/products/description/tonic')
       .expect(200)
       .expect('Content-Type', /json/)
       .end(function(err, res) {
         if (err) return done(err);
         res.body.should.be.instanceof(Array);
+        var products = res.body;
+        products.should.have.length(1);
         done();
       });
   });
