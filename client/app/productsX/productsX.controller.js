@@ -25,7 +25,8 @@ angular.module('pupparoniApp')
     }])
 
   .controller('ProductsXDetailsController',
-    ['$stateParams', '$state', '$scope', 'productsXService', function ($stateParams, $state, $scope, productsXService) {
+    ['$stateParams', '$state', '$scope', 'productsXService', 'cartService',
+      function ($stateParams, $state, $scope, productsXService, cartService) {
       $scope.singleProduct = {quantity:1};
 
       $scope.getProductById=function(id) {
@@ -42,13 +43,7 @@ angular.module('pupparoniApp')
       $scope.addToCart = function(product) {
         console.log("adding to cart" + product.name);
 
-        var order = localStorage.getItem('cart.product');
-        var obj = [];
-        if (order !== null) {
-          obj = JSON.parse(localStorage.getItem(('cart.product')));
-        }
-        obj.push($scope.singleProduct);
-        localStorage.setItem('cart.product', JSON.stringify(obj));
+        cartService.addItem(user, cartService);
 
         alert($scope.singleProduct.name + " added to cart.");
       };
