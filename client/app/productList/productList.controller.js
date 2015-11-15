@@ -9,7 +9,7 @@ angular.module('pupparoniApp')
       socket.syncUpdates('product', $scope.productList);
     });
 
-    $scope.addProduct = function() {
+    $scope.addItem = function() {
       if($scope.newProduct === '') {
         return;
       }
