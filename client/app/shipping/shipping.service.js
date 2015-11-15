@@ -35,10 +35,6 @@ angular.module('pupparoniApp')
         });
 
         return deferred.promise;
-      },
-
-      setShippingApi: function(shippingApi) {
-        api = shippingApi;
       }
 
     };
