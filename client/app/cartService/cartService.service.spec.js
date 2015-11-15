@@ -8,6 +8,13 @@ describe('Service: cartService', function () {
   // load the service's module
   beforeEach(module('pupparoniApp'));
 
+  // instantiate service
+  var cartService;
+  beforeEach(inject(function (_cartService_) {
+    cartService = _cartService_;
+  }));
+
+
   //beforeEach(function () {
   //  var store = {};
   //
@@ -26,21 +33,25 @@ describe('Service: cartService', function () {
     localStorage.removeItem(cartKeyName);
   });
 
-  it('should have a working cartService service', inject(['cartService',
-    function(cartService) {
+  //it('should fail', function() {
+  //  expect(cartSvc.addItem).toBeDefined();
+  //  expect(cartSvc.isEmpty).toBeDefined();
+  //  expect(cartSvc.deleteItem).toBeDefined();
+  //  expect(cartSvc.changeQty).toBeDefined();
+  //});
+
+  it('should have a working cartService service', function() {
       expect(cartService.addItem).toBeDefined();
       expect(cartService.isEmpty).toBeDefined();
       expect(cartService.deleteItem).toBeDefined();
       expect(cartService.changeQty).toBeDefined();
-    }]));
+    });
 
-  it('should have recognize an empty cart', inject(['cartService',
-    function(cartService) {
+  it('should have recognize an empty cart', function() {
       expect(cartService.isEmpty(userName)).toBe(true);
-    }]));
+    });
 
-  it('should allow a product to be added to an empty cart', inject(['cartService',
-    function(cartService) {
+  it('should allow a product to be added to an empty cart', function() {
       expect(localStorage.getItem(cartKeyName)).toBe(null);
 
       var product2 = {id: 2, name: 'Product2', price: 19.99};
@@ -52,10 +63,9 @@ describe('Service: cartService', function () {
       expect(cart.customer).toBe(userName);
       expect(cart.items.length).toBe(1);
       expect(cart.items[0].product.id).toBe(product2.id);
-    }]));
+    });
 
-  it('should allow a product to be added to an existing cart', inject(['cartService',
-    function(cartService) {
+  it('should allow a product to be added to an existing cart', function() {
       expect(localStorage.getItem(cartKeyName)).toBe(null);
 
       var product2 = {id: 2, name: 'Product2', price: 29.99};
@@ -74,10 +84,9 @@ describe('Service: cartService', function () {
       expect(cart.items.length).toBe(2);
       expect(cart.items[0].product.id).toBe(product2.id);
       expect(cart.items[1].product.id).toBe(product4.id);
-    }]));
+    });
 
-  it('should allow a product to be deleted from a 1-item cart', inject(['cartService',
-    function(cartService) {
+  it('should allow a product to be deleted from a 1-item cart', function() {
       expect(localStorage.getItem(cartKeyName)).toBe(null);
 
       var product2 = {id: 2, name: 'Product2', price: 29.99};
@@ -90,10 +99,9 @@ describe('Service: cartService', function () {
 
       cartService.deleteItem(userName, 1);
       expect(localStorage.getItem(cartKeyName)).toBe(null);
-    }]));
+    });
 
-  it('should allow a product to be deleted from a 2-item cart', inject(['cartService',
-    function(cartService) {
+  it('should allow a product to be deleted from a 2-item cart', function() {
       expect(localStorage.getItem(cartKeyName)).toBe(null);
 
       var product2 = {id: 2, name: 'Product2', price: 29.99};
@@ -111,10 +119,9 @@ describe('Service: cartService', function () {
       cart = JSON.parse(localStorage.getItem(cartKeyName));
       expect(cart.items.length).toBe(1);
       expect(cart.items[0].product.id).toBe(product4.id);
-    }]));
+    });
 
-  it('should allow a product quantity to be changed in a 2-item cart', inject(['cartService',
-    function(cartService) {
+  it('should allow a product quantity to be changed in a 2-item cart', function() {
       expect(localStorage.getItem(cartKeyName)).toBe(null);
 
       var product2 = {id: 2, name: 'Product2', price: 29.99};
@@ -138,7 +145,7 @@ describe('Service: cartService', function () {
       expect(cart.items[0].quantity).toBe(22);
       expect(cart.items[1].product.id).toBe(product4.id);
       expect(cart.items[1].quantity).toBe(4);
-    }]));
+    });
 
 });
 
