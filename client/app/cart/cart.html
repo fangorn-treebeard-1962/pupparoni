@@ -240,15 +240,15 @@
     <button type="submit" ng-click="estimateShippingCosts()">Estimate Shipping Costs</button>
     <img height='25' ng-src="assets/images/UPS_LOGO_S.gif" alt="UPS">
 
-    <p>
-      UPS Shipping Estimates for ZIP Code {{response.shipTo.address.postal_code}}
-    </p>
-    <div ng-show="shipping.estimates.length">
+    <div ng-show="shipping.estimates.RatedShipment.length">
+      <p>
+        UPS Shipping Estimates for ZIP Code {{shipping.estimates.shipTo.address.postal_code}}
+      </p>
       <table>
         <tr>
           <th>Type</th><th>Cost</th>
         </tr>
-        <tr ng-repeat="shipment in response.RatedShipment | orderBy: 'TotalCharges.MonetaryValue'">
+        <tr ng-repeat="shipment in shipping.estimates.RatedShipment | orderBy: 'TotalCharges.MonetaryValue'">
           <td>{{ getServiceCodeDesc(shipment.Service.Code) }}</td>
           <td>${{ shipment.TotalCharges.MonetaryValue }}</td>
         </tr>
