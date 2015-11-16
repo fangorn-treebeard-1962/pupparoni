@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pupparoniApp')
-  .controller('CartCtrl', function ($scope, $http, Auth) {
+  .controller('CartCtrl', ['$scope', 'Auth', 'shippingSvc', function ($scope, Auth, shippingSvc) {
     var contentString = window.localStorage.getItem('cart.product');
 
     $scope.deleteOrderItem = function(index) {
@@ -56,7 +56,50 @@ angular.module('pupparoniApp')
       $scope.orderTotal = (Number.parseFloat($scope.subTotal) + Number.parseFloat($scope.tax)).toFixed(2);
     };
 
-    $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.getServiceCodeDesc = function(code) {
+      return $scope.serviceCodeDesc[code];
+    };
+
+    $scope.showShippingFunc = function() {
+      $scope.shipping.show = true;
+    };
+
+    $scope.estimateShippingCosts = function() {
+      $scope.shipping.estimateError = undefined;
+      $scope.shipping.estimates = {};
+
+      if ($scope.shipping.zip === '') {
+        $scope.shipping.estimateError = 'ZIP code must be specified';
+        return;
+      }
+      if ($scope.numItems < 1) {
+        $scope.shipping.estimateError = 'At least one product must be specified';
+        return;
+      }
+
+      shippingSvc.getEstimates(shippingSvc.UPS, $scope.shipping.zip, $scope.totalWeight)
+      .then(function(estimates) {
+        // success
+        console.log("in success function [" + estimates.name + ']');
+
+        $scope.shipping.estimates = estimates;
+        $scope.response = estimates;
+      }, function(err) {
+        // failure
+        console.log("in failure function [" + err + ']');
+        $scope.shipping.estimateError = err;
+      });
+
+      //$http.get('/api/shippings/estimate/ups/' + $scope.shipping.zip + '?weight=' + $scope.totalWeight).success(function(resp) {
+      //  $scope.response = resp;
+      //    console.dir($scope.response);
+      //});
+
+    };
+
+    $scope.shipping = { zip: '', estimates: {}, show: false, estimateError: undefined };
+
+    $scope.getCurrentUser = Auth.getCurrentUser();
 
     $scope.serviceCodeDesc = {
       '01': 'Next Day Air',
@@ -69,47 +112,17 @@ angular.module('pupparoniApp')
       '70': 'UPS Access PointTM Economy'
     };
 
-    $scope.getServiceCodeDesc = function(code) {
-      return $scope.serviceCodeDesc[code];
-    };
-
-    $scope.showShippingFunc = function() {
-      $scope.shipping.show = true;
-    };
-
-    $scope.estimateShippingCosts = function() {
-      console.log('zip code is ' + $scope.shipping.zip);
-
-      $scope.shipping.estimates = [
-        {type: '7-10 business days', cost: '19.42'},
-        {type: '3-5 business days', cost: '29.42'},
-        {type: 'Overnight', cost: '39.42'}
-      ];
-
-      $http.get('/api/shippings/estimate/ups/' + $scope.shipping.zip + '?weight=' + $scope.totalWeight).success(function(resp) {
-        $scope.response = resp;
-          console.dir($scope.response);
-      });
-
-    };
-
     if (contentString != null) {
       $scope.cartContents = getCartContents();
 
-      $scope.shipping = {
-        zip:'',
-        estimates:[],
-        show:false
-      };
-
       $scope.updateButton = [];
-      $scope.cartContents.forEach(function(entry, index) {
+      $scope.cartContents.forEach(function() {
         $scope.updateButton.push(false);
       });
 
       $scope.updateTotals();
     }
-  });
+  }]);
 
 function getCartContents() {
   return JSON.parse(window.localStorage.getItem('cart.product'));
