@@ -80,20 +80,12 @@ angular.module('pupparoniApp')
       shippingSvc.getEstimates(shippingSvc.UPS, $scope.shipping.zip, $scope.totalWeight)
       .then(function(estimates) {
         // success
-        console.log("in success function [" + estimates.name + ']');
-
         $scope.shipping.estimates = estimates;
-        $scope.response = estimates;
       }, function(err) {
         // failure
         console.log("in failure function [" + err + ']');
         $scope.shipping.estimateError = err;
       });
-
-      //$http.get('/api/shippings/estimate/ups/' + $scope.shipping.zip + '?weight=' + $scope.totalWeight).success(function(resp) {
-      //  $scope.response = resp;
-      //    console.dir($scope.response);
-      //});
 
     };
 
