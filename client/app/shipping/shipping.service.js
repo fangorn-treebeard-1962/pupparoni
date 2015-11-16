@@ -27,11 +27,11 @@ angular.module('pupparoniApp')
 
         var deferred = $q.defer(); //creates a new deferred object
 
-        // TODO replace this with the real API call
-        $http.get('/api/shippings/estimate/'+provider).success(function(resp) {
-          deferred.resolve({estimates: []});
-        }).error(function() {
-          deferred.reject("service not available");
+        var url = '/api/shippings/estimate/' + provider + '/' + zip + '?weight=' + wt;
+        $http.get(url).success(function(resp) {
+          deferred.resolve(resp);
+        }).error(function(err) {
+          deferred.reject("service not available: " + err);
         });
 
         return deferred.promise;
