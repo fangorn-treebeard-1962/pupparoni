@@ -57,7 +57,7 @@ describe('Service: shippingSvc', function () {
       var errorSeen = false;
 
       // mock the shippingApi
-      mockBackend.expectGET('/api/shippings/estimate/'+provider).respond(404, 'service not available');
+      mockBackend.expectGET('/api/shippings/estimate/UPS/66213?weight=10').respond(404, 'service not available');
 
       var promise = shippingSvc.getEstimates(provider, 66213, 10);
       mockBackend.flush();
@@ -78,7 +78,7 @@ describe('Service: shippingSvc', function () {
       var errorSeen = false;
 
       // mock the shippingApi
-      mockBackend.expectGET('/api/shippings/estimate/'+provider).respond(200, '{estimates: [{}]');
+      mockBackend.expectGET('/api/shippings/estimate/UPS/66213?weight=10').respond(200, '{estimates: [{}]');
 
       var promise = shippingSvc.getEstimates(provider, 66213, 10);
       mockBackend.flush();
