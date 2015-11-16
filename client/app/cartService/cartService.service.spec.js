@@ -33,13 +33,6 @@ describe('Service: cartService', function () {
     localStorage.removeItem(cartKeyName);
   });
 
-  //it('should fail', function() {
-  //  expect(cartSvc.addItem).toBeDefined();
-  //  expect(cartSvc.isEmpty).toBeDefined();
-  //  expect(cartSvc.deleteItem).toBeDefined();
-  //  expect(cartSvc.changeQty).toBeDefined();
-  //});
-
   it('should have a working cartService service', function() {
       expect(cartService.addItem).toBeDefined();
       expect(cartService.isEmpty).toBeDefined();
