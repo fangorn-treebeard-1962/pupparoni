@@ -60,6 +60,13 @@ var all = {
     clientID:     process.env.GOOGLE_ID || 'id',
     clientSecret: process.env.GOOGLE_SECRET || 'secret',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/google/callback'
+  },
+
+  ups: {
+    clientID:     process.env.UPS_USERID || 'id',
+    clientPassword: process.env.UPS_PASSWD || 'secret',
+    clientAccessKey: process.env.UPS_ACCESS_KEY || 'accessKey',
+    clientShipperNumber: process.env.UPS_SHIPPER_NUMBER || 'accessKey'
   }
 };
 
